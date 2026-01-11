@@ -29,7 +29,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .eq('user_id', userId)
         .eq('role', 'admin')
         .maybeSingle();
-      
+
       if (error) {
         console.error('Error checking admin role:', error);
         return false;
@@ -47,14 +47,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       (event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
-        
+
         // Defer admin check with setTimeout to prevent deadlock
         if (session?.user) {
-          setTimeout(async () => {
-            const adminStatus = await checkAdminRole(session.user.id);
-            setIsAdmin(adminStatus);
+          // Hardcoded admin check for specific user
+          if (session.user.email === 'mutahharbhutta3000@gmail.com') {
+            console.log('Granting hardcoded admin access');
+            setIsAdmin(true);
             setIsLoading(false);
-          }, 0);
+          } else {
+            setTimeout(async () => {
+              const adminStatus = await checkAdminRole(session.user.id);
+              setIsAdmin(adminStatus);
+              setIsLoading(false);
+            }, 0);
+          }
         } else {
           setIsAdmin(false);
           setIsLoading(false);
@@ -66,12 +73,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
-      
+
       if (session?.user) {
-        checkAdminRole(session.user.id).then(adminStatus => {
-          setIsAdmin(adminStatus);
+        if (session.user.email === 'mutahharbhutta3000@gmail.com') {
+          console.log('Granting hardcoded admin access');
+          setIsAdmin(true);
           setIsLoading(false);
-        });
+        } else {
+          checkAdminRole(session.user.id).then(adminStatus => {
+            setIsAdmin(adminStatus);
+            setIsLoading(false);
+          });
+        }
       } else {
         setIsLoading(false);
       }
