@@ -2,7 +2,7 @@
 
 ## Project info
 
-BloodLink Lahore is a smart blood donation platform for Lahore using Dijkstra's algorithm to find nearest donors. It covers Gulberg, DHA, Model Town and more.
+LifeFlow (formerly BloodLink Lahore) is a smart blood donation platform for Lahore using Dijkstra's algorithm to find nearest donors. It covers Gulberg, DHA, Model Town and more.
 
 ## Getting Started
 

@@ -28,13 +28,13 @@ export function Navbar() {
     navigate('/');
   };
 
-  const navItems = isAdmin 
+  const navItems = isAdmin
     ? [...publicNavItems,
-       ...authNavItems,
-       { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-       { path: '/donation-history', label: 'History', icon: History }
-      ]
-    : user 
+    ...authNavItems,
+    { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { path: '/donation-history', label: 'History', icon: History }
+    ]
+    : user
       ? [...publicNavItems, ...authNavItems, { path: '/profile', label: 'My Profile', icon: User }]
       : publicNavItems;
 
@@ -48,7 +48,7 @@ export function Navbar() {
               <Droplets className="w-5 h-5 text-primary-foreground" />
             </div>
             <div className="hidden sm:block">
-              <h1 className="font-display font-bold text-lg text-foreground">BloodLink</h1>
+              <h1 className="font-display font-bold text-lg text-foreground">LifeFlow</h1>
               <p className="text-xs text-muted-foreground -mt-1">Lahore</p>
             </div>
           </Link>
@@ -58,7 +58,7 @@ export function Navbar() {
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
               const Icon = item.icon;
-              
+
               return (
                 <Link key={item.path} to={item.path}>
                   <Button
@@ -72,8 +72,8 @@ export function Navbar() {
                 </Link>
               );
             })}
-            
-          {/* Auth Buttons */}
+
+            {/* Auth Buttons */}
             {user ? (
               <Button variant="ghost" size="sm" onClick={handleSignOut} className="gap-2 ml-2">
                 <LogOut className="w-4 h-4" />
@@ -112,10 +112,10 @@ export function Navbar() {
               {navItems.map((item) => {
                 const isActive = location.pathname === item.path;
                 const Icon = item.icon;
-                
+
                 return (
-                  <Link 
-                    key={item.path} 
+                  <Link
+                    key={item.path}
                     to={item.path}
                     onClick={() => setIsOpen(false)}
                   >
@@ -129,11 +129,11 @@ export function Navbar() {
                   </Link>
                 );
               })}
-              
+
               {/* Mobile Auth */}
               {user ? (
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   onClick={() => { handleSignOut(); setIsOpen(false); }}
                   className="w-full justify-start gap-2"
                 >

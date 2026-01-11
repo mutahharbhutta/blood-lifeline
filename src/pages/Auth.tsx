@@ -166,7 +166,7 @@ export default function Auth() {
               <User className="w-8 h-8 text-primary" />
             </div>
             <h1 className="text-3xl font-display font-bold text-foreground mb-2">
-              Welcome to BloodLink
+              Welcome to LifeFlow
             </h1>
             <p className="text-muted-foreground">
               Sign in or create an account to request blood or become a donor
