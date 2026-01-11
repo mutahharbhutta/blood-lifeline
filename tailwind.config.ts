@@ -72,10 +72,6 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-pattern': "url('/hero-pattern.svg')",
-      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -101,18 +97,6 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.7" },
         },
-        "float": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        "hospital-pulse": {
-          "0%, 100%": { transform: "scale(1)", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)" },
-          "50%": { transform: "scale(1.05)", boxShadow: "0 4px 20px rgba(59, 130, 246, 0.4)" },
-        },
-        "donor-pulse": {
-          "0%, 100%": { transform: "scale(1)", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)" },
-          "50%": { transform: "scale(1.05)", boxShadow: "0 4px 20px rgba(220, 38, 38, 0.4)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -121,9 +105,6 @@ export default {
         "slide-in-right": "slide-in-right 0.5s ease-out forwards",
         "scale-in": "scale-in 0.3s ease-out forwards",
         "pulse-soft": "pulse-soft 2s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite",
-        "hospital-pulse": "hospital-pulse 2s ease-in-out infinite",
-        "donor-pulse": "donor-pulse 2s ease-in-out infinite",
       },
       boxShadow: {
         'glow': '0 0 40px hsl(var(--primary) / 0.2)',
