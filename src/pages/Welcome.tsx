@@ -1,18 +1,20 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  Droplets, 
-  Heart, 
-  Users, 
-  ArrowRight, 
-  Shield, 
+import {
+  Droplets,
+  Heart,
+  Users,
+  ArrowRight,
+  Shield,
   Clock,
   MapPin,
   Sparkles
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Welcome() {
+  const { user } = useAuth();
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Hero Section */}
@@ -69,7 +71,7 @@ export default function Welcome() {
               transition={{ delay: 0.3 }}
               className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
             >
-              Join Lahore's smartest blood donation network. Using advanced algorithms 
+              Join Lahore's smartest blood donation network. Using advanced algorithms
               to connect donors with those in need - faster than ever before.
             </motion.p>
 
@@ -81,18 +83,27 @@ export default function Welcome() {
               className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
             >
               <Link to="/home">
-                <Button variant="hero" size="xl" className="w-full sm:w-auto">
+                <Button variant={user ? "hero" : "hero"} size="xl" className="w-full sm:w-auto">
                   <Heart className="w-5 h-5" />
                   Explore Platform
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <Link to="/auth">
-                <Button variant="outline" size="xl" className="w-full sm:w-auto">
-                  <Users className="w-5 h-5" />
-                  Sign In / Register
-                </Button>
-              </Link>
+              {user ? (
+                <Link to="/home">
+                  <Button variant="outline" size="xl" className="w-full sm:w-auto">
+                    <Users className="w-5 h-5" />
+                    Go to Home
+                  </Button>
+                </Link>
+              ) : (
+                <Link to="/auth">
+                  <Button variant="outline" size="xl" className="w-full sm:w-auto">
+                    <Users className="w-5 h-5" />
+                    Sign In / Register
+                  </Button>
+                </Link>
+              )}
             </motion.div>
 
             {/* Feature Cards */}

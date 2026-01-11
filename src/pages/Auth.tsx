@@ -27,14 +27,14 @@ export default function Auth() {
   const navigate = useNavigate();
   const { user, signIn, signUp, signInWithGoogle } = useAuth();
   const { toast } = useToast();
-  
+
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ email: '', password: '', fullName: '', phone: '' });
   const [errors, setErrors] = useState<{ email?: string; password?: string; fullName?: string }>({});
 
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate('/home');
     }
   }, [user, navigate]);
 
@@ -94,7 +94,7 @@ export default function Auth() {
         title: 'Welcome back!',
         description: 'You have successfully signed in.',
       });
-      navigate('/');
+      navigate('/home');
     }
   };
 
@@ -154,7 +154,7 @@ export default function Auth() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-md">
           <motion.div
@@ -208,7 +208,7 @@ export default function Auth() {
                   </svg>
                   Continue with Google
                 </Button>
-                
+
                 <div className="relative my-6">
                   <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />
